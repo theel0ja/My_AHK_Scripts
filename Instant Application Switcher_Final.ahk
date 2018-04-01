@@ -38,23 +38,23 @@ if WinActive("ahk_class MozillaWindowClass")
 Return
 
 
-F13::
+CapsLock::
 switchToFirefox(){
-sendinput, {SC0E8} ;scan code of an unassigned key. Do I NEED this?
-IfWinNotExist, ahk_class MozillaWindowClass
-	Run, firefox.exe
-	Sleep 3000
-if WinActive("ahk_exe firefox.exe")
-	Send ^{tab}
-else
-	{
-	;WinRestore ahk_exe firefox.exe
-	WinActivate ahk_exe firefox.exe
-	;sometimes winactivate is not enough. the window is brought to the foreground, but not put into FOCUS.
-	;the below code should fix that.
-	WinGet, hWnd, ID, ahk_class MozillaWindowClass
-	DllCall("SetForegroundWindow", UInt, hWnd) 
-	}
+    sendinput, {SC0E8} ;scan code of an unassigned key. Do I NEED this?
+    IfWinNotExist, ahk_class MozillaWindowClass
+        Run, firefox.exe
+        ;Sleep 3000
+    if WinActive("ahk_exe firefox.exe")
+        Send ^{tab}
+    else
+    {
+        ;WinRestore ahk_exe firefox.exe
+        WinActivate ahk_exe firefox.exe
+        ;sometimes winactivate is not enough. the window is brought to the foreground, but not put into FOCUS.
+        ;the below code should fix that.
+        WinGet, hWnd, ID, ahk_class MozillaWindowClass
+        DllCall("SetForegroundWindow", UInt, hWnd) 
+    }
 }
 
 Return
