@@ -1,8 +1,3 @@
 # My_AHK_Scripts
-All My AutoHotkey Scripts...................
 
-
-These things come tremendously useful in my video editing as well as daily life................
-So I thought these would be useful for ALL :)
-
-YOU ARE FREE TO EDIT THEM OR DO WHATEVER YOU WANT..............
+My Autohotkey scripts, forked from [imkvinayan/My_AHK_Scripts](https://github.com/imkvinayan/My_AHK_Scripts) that is forked from the Macro King [Taran Van Hemert](https://github.com/TaranVH/2nd-keyboard)'s repository.
