@@ -35,57 +35,10 @@ Menu, Tray, Icon, shell32.dll, 44 ;this changes the icon into a little STAR. jus
 `::
 if WinActive("ahk_class MozillaWindowClass")
 	Send ^+{tab} ;CTRL SHIFT TAB is the shortcut for "go to previous tab"
-if WinActive("ahk_class Chrome_WidgetWin_1")
-	Send ^+{tab}
-if WinActive("ahk_class Notepad++")
-	Send ^+{tab}
-if WinActive("ahk_exe Adobe Premiere Pro.exe")
-	Send {F12} ;F12 is my shortcut in premiere for "go back"(in bins)
-if WinActive("ahk_exe explorer.exe")
-	Send !{up} ;ALT UP is the explorer shortcut to go down one folder level.
 Return
 
 
-^`::
-IfWinNotExist, ahk_class CabinetWClass
-	Run, explorer.exe
-GroupAdd, taranexplorers, ahk_class CabinetWClass ;You have to make a new group for each application, don't use the same one for all of them!
-if WinActive("ahk_exe explorer.exe")
-	GroupActivate, taranexplorers, r
-else
-	WinActivate ahk_class CabinetWClass ;you have to use WinActivatebottom if you didn't create a window group.
-Return
-
-
-+`::
-;In unknown circumstances, if chrome is opened with this script, it becomes a blank screen, and cannot open unless you restart your computer.
-;you can comment out the next two lines if that happens to you...
-IfWinNotExist, ahk_class Chrome_WidgetWin_1
-	Run, chrome.exe
-if WinActive("ahk_class Chrome_WidgetWin_1")
-	Send ^{tab}
-else
-	WinActivate ahk_class Chrome_WidgetWin_1
-Return
-
-
-
-!`::
-IfWinNotExist, ahk_class Notepad++
-	Run, notepad++.exe
-if WinActive("ahk_class Notepad++")
-	Send ^+{tab}
-WinActivate ahk_class Notepad++
-
-Return
-
-#`::
-IfWinNotExist, ahk_class Premiere Pro
-	Run, Adobe Premiere Pro.exe
-WinActivate ahk_class Premiere Pro
-Return
-
-^+`::
+F13::
 switchToFirefox(){
 sendinput, {SC0E8} ;scan code of an unassigned key. Do I NEED this?
 IfWinNotExist, ahk_class MozillaWindowClass
@@ -105,23 +58,3 @@ else
 }
 
 Return
-
-
-;If you want to only launch an application when holding the SHIFT key, you can program it this way:
-;F5::WinActivate ahk_class Premiere Pro
-;+F5::Run, Adobe Premiere Pro.exe
-
-
-
-;EXTRA STUFF YOU CAN DELETE
-
-
-
-#IfWinActive
-;opens the Action Center. Deosn't work all that well.
-;http://superuser.com/questions/290068/windows-keyboard-shortcut-to-view-calendar
-#z::
-Send #b{left}{enter}
-Return
-
-
